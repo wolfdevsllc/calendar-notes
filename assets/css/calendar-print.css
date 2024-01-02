@@ -1,0 +1,37 @@
+* {margin: 0; padding: 0;}
+body {font-family: -apple-system,"system-ui",Segoe UI,roboto,helvetica,arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,sans-serif; font-size: 14px; line-height: 1.5; color: #333; padding: 50px 0;}
+table.calendar {border-collapse: collapse; width: 100%}
+table.calendar tr.calendar-row {text-align: center;}
+table.calendar td {border: 1px solid #e1e1e1; width: calc(100% / 7);}
+.date-content {
+    display: block;
+    text-align: left;
+    min-height: 100px;
+    padding: 8px;
+}
+.date-content ul {
+    margin: 10px 0 0 0;
+    padding-left: 15px;
+}
+.date-content ul li {
+    margin-bottom: 2px;
+    font-size: 12px;
+}
+.calendar-wrap {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+h2.month-name {
+    font-size: 22px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 400;
+}
+table.calendar td a {
+    display: block;
+    padding: 10px 5px;
+}
+.print-button {
+    display: none !important;
+}
