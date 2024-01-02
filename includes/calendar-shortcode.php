@@ -91,12 +91,18 @@ function create_calendar( $atts ) {
             var monthPrintable = document.getElementById("month-printable-" + monthIndex);
             var printWindow = window.open("", "_blank");
             printWindow.document.write("<html><head><title>Print calendar</title>");
-            printWindow.document.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"'. $calendar_print_css .'\" />");
-            printWindow.document.write("</head><body>");
-            printWindow.document.write(monthPrintable.innerHTML);
-            printWindow.document.write("</body></html>");
-            printWindow.document.close();
-            printWindow.print();
+            var linkElement = printWindow.document.createElement("link");
+            linkElement.setAttribute("rel", "stylesheet");
+            linkElement.setAttribute("type", "text/css");
+            linkElement.setAttribute("href", "'. $calendar_print_css .'");
+            linkElement.onload = function() {
+                printWindow.document.write("</head><body>");
+                printWindow.document.write(monthPrintable.innerHTML);
+                printWindow.document.write("</body></html>");
+                printWindow.document.close();
+                printWindow.print();
+            }
+            printWindow.document.head.appendChild(linkElement);
         }
         </script>';
 
