@@ -27,7 +27,7 @@ define( 'CALENDAR_NOTES_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 require_once CALENDAR_NOTES_PLUGIN_DIR . 'includes/calendar-post-type.php';
 
 // Check if ACF is installed, if not show admin notice and deactivate plugin
-if ( ! function_exists( 'acf_pro' ) ) {
+if ( ! class_exists( 'acf_pro' ) ) {
     add_action( 'admin_notices', 'calendar_notes_acf_notice' );
     function calendar_notes_acf_notice() {
         ?>
