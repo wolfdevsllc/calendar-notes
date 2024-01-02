@@ -27,21 +27,18 @@ define( 'CALENDAR_NOTES_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 require_once CALENDAR_NOTES_PLUGIN_DIR . 'includes/calendar-post-type.php';
 
 // Check if ACF is installed, if not show admin notice and deactivate plugin
-if ( ! function_exists( 'get_field' ) ) {
+if ( ! function_exists( 'acf_pro' ) ) {
     add_action( 'admin_notices', 'calendar_notes_acf_notice' );
     function calendar_notes_acf_notice() {
         ?>
         <div class="notice notice-error is-dismissible">
-            <p><?php _e( 'Calendar Notes requires Advanced Custom Fields to be installed and activated.', 'calendar-notes' ); ?></p>
+            <p><?php _e( 'Calendar Notes requires Advanced Custom Fields Pro to be installed and activated.', 'calendar-notes' ); ?></p>
         </div>
         <?php
         deactivate_plugins( plugin_basename( __FILE__ ) );
     }
     return;
 }
-
-// Hide ACF field group menu item
-add_filter('acf/settings/show_admin', '__return_false');
 
 // Add Calendar Custom Fields
 require_once CALENDAR_NOTES_PLUGIN_DIR . 'includes/calendar-custom-fields.php';
